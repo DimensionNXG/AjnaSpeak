@@ -7,7 +7,7 @@
 #include <string.h>
 #include <malloc.h>
 #include <espeak/speak_lib.h>
-#include "my_speak_lib.h"
+#include "SpeakUtility.h"
 //#include "ArduinoDefs.h"
 //#include "SDRFunctions.h"
 
@@ -30,7 +30,7 @@ static const char g_szDefaultVoice[] = {"default"};
 //-----------------------------------------------------------------------------
 // Constructor
 //-----------------------------------------------------------------------------
-AjnaSpeak::AjnaSpeak()
+SpeakUtility::SpeakUtility()
 {
 
     _fSpeakInit = false;
@@ -45,7 +45,7 @@ AjnaSpeak::AjnaSpeak()
 // InitSpeak - This function initializes the speech using the current file name
 //  or parameters...
 //-----------------------------------------------------------------------------
-void AjnaSpeak::SetVoiceByName(const char *pszVoiceName)
+void SpeakUtility::SetVoiceByName(const char *pszVoiceName)
 {
     // This overrides all settings
     _pszVoiceFileName = pszVoiceName;
@@ -57,7 +57,7 @@ void AjnaSpeak::SetVoiceByName(const char *pszVoiceName)
 //-----------------------------------------------------------------------------
 // pszLanguage is something like "en" or "en-us"
 // gender: 0-none, 1-mail, 2-female
-void AjnaSpeak::SetVoiceByProperties(const char *pszLanguage, unsigned char gender) 
+void SpeakUtility::SetVoiceByProperties(const char *pszLanguage, unsigned char gender) 
 {
     _pszVoiceLanguage = pszLanguage;
     _bVoiceGender = gender;
@@ -68,7 +68,7 @@ void AjnaSpeak::SetVoiceByProperties(const char *pszLanguage, unsigned char gend
 // InitSpeak - This function initializes the speech using the current file name
 //  or parameters...
 //-----------------------------------------------------------------------------
-void AjnaSpeak::InitSpeak()
+void SpeakUtility::InitSpeak()
 {
     espeak_ERROR err = EE_NOT_FOUND; // something other than OK...
 
@@ -113,7 +113,7 @@ void AjnaSpeak::InitSpeak()
 //-----------------------------------------------------------------------------
 // Data definitions
 //-----------------------------------------------------------------------------
-void AjnaSpeak::Speak(const char *psz, bool fWait)
+void SpeakUtility::Speak(const char *psz, bool fWait)
 {
 
     // Tell msound to release itself if necessary...
@@ -142,7 +142,7 @@ void AjnaSpeak::Speak(const char *psz, bool fWait)
 //-----------------------------------------------------------------------------
 // EndSpeak - terminate our usage of espeak
 //-----------------------------------------------------------------------------
-void AjnaSpeak::EndSpeak(void)
+void SpeakUtility::EndSpeak(void)
 {
     if (_fSpeakInit)
     {

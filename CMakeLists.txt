@@ -50,13 +50,33 @@ include_directories(include)
 file(GLOB SOURCES_CPP "src/*.cpp")
 file(GLOB SOURCES_H "include/*.h")
 
-add_executable(AjnaSpeak
+add_library(AjnaSpeak
+        SHARED
+        ${SOURCES_CPP}
+        ${SOURCES_H}
+    )
+
+target_compile_definitions(AjnaSpeak PRIVATE LIB_WITH_UNITY=1)
+
+target_link_libraries(AjnaSpeak
+    ${eSpeak_LIBRARIES}
+    espeak
+    -lpthread
+)
+#########################################
+include_directories(include)
+#include_directories($LIBESPEAK_INCLUDE_DIRS)
+
+file(GLOB SOURCES_CPP "src/*.cpp")
+file(GLOB SOURCES_H "include/*.h")
+
+add_executable(AjnaSpeakApp
         ${SOURCES_CPP}
         ${SOURCES_H}
     )
 
 
-target_link_libraries(AjnaSpeak
+target_link_libraries(AjnaSpeakApp
     ${eSpeak_LIBRARIES}
     espeak
     -lpthread

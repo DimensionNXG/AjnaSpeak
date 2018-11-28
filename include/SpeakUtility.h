@@ -22,10 +22,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //======================================================================================
 #pragma once
 
-class AjnaSpeak
+class SpeakUtility
 {
     public:
-        AjnaSpeak(void);                        // Constructor
+        SpeakUtility(void);                        // Constructor
         void Speak(const char *psz, bool fWait); // A string to output to the speaker
         void EndSpeak(void);                     // End voice output 
 
