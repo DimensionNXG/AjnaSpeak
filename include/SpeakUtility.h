@@ -28,7 +28,8 @@ class SpeakUtility
         SpeakUtility(void);                        // Constructor
         void Speak(const char *psz, bool fWait); // A string to output to the speaker
         void EndSpeak(void);                     // End voice output 
-
+        bool IsSpeaking();
+        void StopSpeaking();
         void SetVoiceByName(const char *pszVoiceName); // specific voice file name
 
         // pszLanguage is something like "en" or "en-us"

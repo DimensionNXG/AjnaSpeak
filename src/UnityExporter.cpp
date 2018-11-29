@@ -27,12 +27,20 @@ extern "C" void AjnaSpeak_Sequential(char* message)
         speaker.SpeakSequential(message);
 }
 
-extern "C" void AjnaSpeak_RealTime(char* message)
+extern "C" bool AjnaSpeak_NotSequential(char* message)
+{
+    //if (message)
+       // speaker.SpeakNotSequential(message);
+    return true;
+}
+
+
+extern "C" bool AjnaSpeak_Realtime(char* message)
 {
     if (message)
         speaker.SpeakRealtime(message);
+    return true;
 }
-
 #endif
 
 

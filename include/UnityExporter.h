@@ -21,11 +21,13 @@
 #define EXPORT __declspec(dllexport)
 #define IMPORT __declspec(dllimport)
 #define CoreAPI __declspec(dllexport)
+#define CoreAPI1 __declspec(dllexport)
 #elif defined(__GNUC__)
 //  GCC
 #define DLL_PUBLIC __attribute__ ((visibility ("default")))
 #define DLL_LOCAL  __attribute__ ((visibility ("hidden")))
 #define CoreAPI DLL_PUBLIC
+#define CoreAPI1 DLL_PUBLIC
 #else
 //  do nothing and hope for the best?
 #define EXPORT
@@ -35,12 +37,17 @@
 
 //typedef void(/*__stdcall*/ * charArrayCallback)(char*);
 
-static AjnaSpeak speaker;
+ static AjnaSpeak speaker;
 
 //extern "C" CoreAPI void AjnaSpeak_Start();
 extern "C" CoreAPI void AjnaSpeak_Stop();
+extern "C" CoreAPI1 bool AjnaSpeak_Realtime(char* message);
+
 extern "C" CoreAPI void AjnaSpeak_Sequential(char* message);
-extern "C" CoreAPI void AjnaSpeak_Realtime(char* message);
+extern "C" CoreAPI1 bool AjnaSpeak_NotSequential(char* message);
+
+
+
 
 #endif
 

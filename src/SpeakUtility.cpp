@@ -137,8 +137,15 @@ void SpeakUtility::Speak(const char *psz, bool fWait)
     }
 }
 
+bool SpeakUtility::IsSpeaking()
+{
+    return espeak_IsPlaying();
+}
     
-
+void SpeakUtility::StopSpeaking()
+{
+    espeak_Cancel();
+}
 //-----------------------------------------------------------------------------
 // EndSpeak - terminate our usage of espeak
 //-----------------------------------------------------------------------------
